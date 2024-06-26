@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ThoughtGarden{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <nav class="sticky top-0 z-10 w-full px-4 py-3 bg-white shadow-md lg:px-6">
+        <div class="flex items-center justify-between max-w-6xl mx-auto">
+            <a href="{% url 'home' %}" class="text-xl font-bold text-gray-800">Thought Garden</a>
+            <div class="hidden lg:flex items-center space-x-6">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'explore' %}" class="text-gray-600 hover:text-gray-800">Explora</a>
+                    <a href="{% url 'tasks' %}" class="text-gray-600 hover:text-gray-800">Dream Drafts</a>
+                    <a href="{% url 'tasks_completed' %}" class="text-gray-600 hover:text-gray-800">My dreams</a>
+                    <a href="{% url 'create_task' %}" class="text-gray-600 hover:text-gray-800">Make a dream</a>
+                    <a href="{% url 'logout' %}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-700">Cerrar sesión</a>
+                {% else %}
+                    <a href="{% url 'signin' %}" class="text-gray-600 hover:text-gray-800">Log In</a>
+                    <a href="{% url 'signup' %}" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-700">Sign Up</a>
+                {% endif %}
+            </div>
+            <button class="lg:hidden" id="nav-toggle">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="lg:hidden" id="nav-menu">
+            {% if user.is_authenticated %}
+                <a href="{% url 'explore' %}" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Explore</a>
+                <a href="{% url 'tasks' %}" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Dream Drafts</a>
+                <a href="{% url 'tasks_completed' %}" class="block px-4 py-2 text-gray-600 hover:text-gray-800">My dreams</a>
+                <a href="{% url 'create_task' %}" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Make a dream</a>
+                <a href="{% url 'logout' %}" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Cerrar sesión</a>
+            {% else %}
+                <a href="{% url 'signin' %}" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Log In</a>
+                <a href="{% url 'signup' %}" class="block px-4 py-2 text-gray-600 hover:text-gray-800">Sign Up</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-4 px-4 flex-grow">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script>
+        document.getElementById('nav-toggle').onclick = function() {
+            var navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('hidden');
+        };
+    </script>
+</body>
+</html>

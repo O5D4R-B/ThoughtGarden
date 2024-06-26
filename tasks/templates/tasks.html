@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-2xl">
+    <h2 class="mt-10 text-center text-3xl font-bold text-gray-900">{{ title }}</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-2xl">
+    <ul class="space-y-4">
+      {% for task in tasks %}
+      <li class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6">
+        <a class="block no-underline text-gray-900" href="{% url 'task_detail' task.id %}">
+          <header class="mb-2">
+            <h3 class="text-xl font-bold">
+              {{ task.title }}
+              {% if task.important %}
+                <span class="ml-2 inline-block bg-gray-200 text-gray-800 text-xs font-semibold px-2 py-1 rounded">Importante</span>
+              {% endif %}
+            </h3>
+            <p class="text-gray-500 text-sm">{{ task.user.username }}</p>
+          </header>
+          {% if task.image %}
+          <div class="mb-4">
+            <img src="{{ task.image.url }}" alt="{{ task.title }}" class="w-full h-40 object-cover rounded-md">
+          </div>
+          {% endif %}
+          <p class="text-gray-700 mb-2">
+            {{ task.description|slice:":100" }}
+            {% if task.description|length > 100 %}...{% endif %}
+          </p>
+          <p class="text-gray-400 text-sm">{{ task.datecompleted|date:'M j Y, H:i' }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

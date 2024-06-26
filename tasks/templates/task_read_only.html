@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-2xl">
+    <h2 class="mt-10 text-center text-3xl font-bold text-gray-900">{{ task.title }}</h2>
+  </div>
+
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-2xl bg-white shadow-md rounded-lg p-8">
+    <p class="text-gray-700 mb-6">{{ task.description }}</p>
+    
+    {% if task.image %}
+    <div class="mb-6">
+      <img src="{{ task.image.url }}" alt="{{ task.title }}" class="w-full h-auto rounded-md shadow-md">
+    </div>
+    {% endif %}
+    
+    <div class="mt-6 border-t border-gray-200 pt-4">
+      <p class="text-gray-500 text-sm">Fecha de Completado: {{ task.datecompleted|date:'M j Y, H:i' }}</p>
+      <p class="text-gray-500 text-sm mt-2">Usuario: {{ task.user.username }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Make it true - Comparte Tus Sueños{% endblock %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    .custom-font {
+        font-family: 'Poppins', sans-serif;
+    }
+    .bg-gradient {
+        background: linear-gradient(to center, #333, #fff);
+        background: -webkit-radial-gradient(circle, #fff 0%, #999 100%);
+        background: radial-gradient(circle, #fff 0%, #999 100%);
+    }
+    .text-gradient {
+        background: linear-gradient(45deg, #000, #333);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .fade-in {
+        animation: fadeIn 0.5s ease-out;
+    }
+    .dev-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+</style>
+
+<div class="bg-gradient min-h-screen flex items-center justify-center pt-16 pb-16">
+    <div class="bg-white bg-opacity-80 shadow-2xl rounded-lg p-12 max-w-4xl mx-auto transform hover:scale-105 transition duration-300 custom-font fade-in">
+        <h1 class="text-4xl font-bold text-gradient mb-6 text-center">Cada gran idea alguna vez comenzó como un sueño lejano</h1>
+        <p class="text-gray-800 mb-8 text-center text-lg">
+            Make it true es un espacio creativo donde podrás compartir esas ideas que siempre has pensado que harían el mundo mejor.
+        </p>
+        <div class="flex justify-center">
+            <a href="{% url 'create_task' %}" class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition duration-300 transform hover:translate-y-1 text-lg font-semibold">
+                Comparte Tu Sueño
+            </a>
+        </div>
+        <div class="mt-12 flex justify-center space-x-6">
+            <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <p class="font-semibold text-gray-800">Inspírate</p>
+            </div>
+            <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                </svg>
+                <p class="font-semibold text-gray-800">Comparte</p>
+            </div>
+            <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+                <p class="font-semibold text-gray-800">Conecta</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Nuevo bloque para los desarrolladores -->
+<div class="bg-gray-100 py-16">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 custom-font">Nuestro Equipo</h2>
+        <div class="flex flex-wrap justify-center gap-8">
+            <div class="text-center">
+                <img src="https://scontent.fmex10-5.fna.fbcdn.net/v/t39.30808-6/323779782_520221466754870_8422273175589214874_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeElEBPIkNNAlZCOZkgsIwKN4JhskxY7qIPgmGyTFjuog1iVNmuJHELBKlldcxpUXs8GYW5szKmig5P-IqcXW5tP&_nc_ohc=snrY41Ux-gsQ7kNvgGV7VNY&_nc_ht=scontent.fmex10-5.fna&oh=00_AYDIANf5nWewFQjzlDlccVGd_gRXQIpTqaaptW_eAyIWVA&oe=66816200" alt="Desarrollador 1" class="dev-image mb-4">
+                <p class="font-semibold text-lg">Miguel</p>
+                <p class="text-gray-600">Frontend</p>
+            </div>
+            <div class="text-center">
+                <img src="https://scontent.flov1-1.fna.fbcdn.net/v/t1.6435-9/140047617_798224017572072_5867010193909655245_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=b895b5&_nc_eui2=AeG_ks3H_xbV7SR_zHPa3DBxidLegcXpCjyJ0t6BxekKPKrHPXgeV96tOCoi9cA-XvIO4BCGhfx_rTRsHDncHZst&_nc_ohc=1VCVXOMSWekQ7kNvgGfwBBD&_nc_ht=scontent.flov1-1.fna&oh=00_AYCwC_fk10jMMwZ_VcCuD6vs674wgPcqre-fmIdl_7I0Fg&oe=66A30CEB" alt="Desarrollador 2" class="dev-image mb-4">
+                <p class="font-semibold text-lg">Oscar Berrueco</p>
+                <p class="text-gray-600">Backend</p>
+            </div>
+            <div class="text-center">
+                <img src="https://scontent.flov1-1.fna.fbcdn.net/v/t39.30808-1/350511791_2538180599664029_2479987768276197038_n.jpg?stp=cp6_dst-jpg_p200x200&_nc_cat=107&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeHMxnR9ciksjH4m_w-HjO2xTnsShBR8WjZOexKEFHxaNgffU6IAUpss7cKsuiF6UCvGTdx9AIw8P8RSKo-q2MBg&_nc_ohc=kPUmn2pZW74Q7kNvgEoLUGG&_nc_ht=scontent.flov1-1.fna&oh=00_AYAHJJNbDkuq6mZhhUuzQVYODB7gnb7iJFgsxdr1axSBXg&oe=66817492" alt="Desarrollador 3" class="dev-image mb-4">
+                <p class="font-semibold text-lg">Natalia Anaya</p>
+                <p class="text-gray-600">Diseñador UI/UX</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
